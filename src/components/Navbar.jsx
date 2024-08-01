@@ -7,7 +7,9 @@ import { auth } from "@/lib/firebaseConfig";
 import Image from "next/image";
 //icons
 import Notification from "@/../public/assests/icons/notification-bell.svg";
+//components
 import SearchBar from "./SearchBar";
+import SignOutButton from "./SignOutButton";
 
 const Navbar = () => {
   const [user] = useAuthState(auth);
@@ -19,7 +21,7 @@ const Navbar = () => {
             <h1 className="text-xl font-bold">WhatsDown</h1>
           </Link>
         </li>
-        <li className="min-w-[35%] m-1 flex justify-end">
+        <li className="min-w-[35%] m-1 flex justify-between">
           {/* <SearchBar /> */}
           {user && (
             <>
@@ -35,6 +37,9 @@ const Navbar = () => {
                   </div>
                 </button>
                 <ProfileIcon />
+              </div>
+              <div>
+                <SignOutButton />
               </div>
             </>
           )}
