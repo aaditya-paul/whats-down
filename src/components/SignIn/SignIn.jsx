@@ -1,7 +1,25 @@
+'use client'
+import { auth } from "@/lib/firebaseConfig";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 const SignIn = () => {
+  const signInWithGoogle = async () => {
+    try {
+      const provider = new GoogleAuthProvider();
+      await signInWithPopup(auth, provider);
+    } catch (error) {
+      console.error("Error during sign-in:", error);
+    }
+  };
+  const [user] = useAuthState(auth);
+  if (user) {
+    const router = useRouter();
+    router.push("/");
+  }
   return (
     <>
       <div className="w-screen h-[90vh] relative top-12 flex justify-center items-center text-slate-300">
@@ -26,9 +44,9 @@ const SignIn = () => {
             </div>
             <div className="flex justify-end">
               <Link href={"#"}>
-              <span className="text-xs text-blue-500 cursor-pointer hover:underline">
-                Forget password?
-              </span>
+                <span className="text-xs text-blue-500 cursor-pointer hover:underline">
+                  Forget password?
+                </span>
               </Link>
             </div>
             <div className="flex justify-center items-center">
@@ -39,7 +57,12 @@ const SignIn = () => {
           </div>
           <div>or</div>
           <div>
-            <div className="cursor-pointer p-2 bg-blue-500 rounded-md m-2 hover:bg-blue-600 transition-all">
+            <div
+              className="cursor-pointer p-2 bg-blue-500 rounded-md m-2 hover:bg-blue-600 transition-all"
+              onClick={() => {
+                signInWithGoogle();
+              }}
+            >
               Sign in with Google
             </div>
           </div>

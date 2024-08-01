@@ -1,7 +1,29 @@
+"use client"
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import Link from "next/link";
 import React from "react";
 
+import { auth } from "@/lib/firebaseConfig";
+import { db } from "@/lib/firebaseConfig";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useRouter } from "next/navigation";
+
+
 const SignUp = () => {
+  const signInWithGoogle = async () => {
+    try {
+      const provider = new GoogleAuthProvider();
+      await signInWithPopup(auth, provider);
+    } catch (error) {
+      console.error("Error during sign-in:", error);
+    }
+  };
+  const [user] = useAuthState(auth);
+  if (user) {
+    const router = useRouter();
+    router.push("/");
+  }
+
   return (
     <>
       <div className="w-[50vw] h-[90vh] relative top-12 flex justify-center items-center text-slate-300">
@@ -28,7 +50,7 @@ const SignUp = () => {
               <input
                 type="password"
                 placeholder="Create password"
-                className="bg-transparent outline-none h-full w-full  p-2"
+                className="bg-transparent outline-none h-full w-full p-2"
               />
             </div>
 
@@ -40,7 +62,12 @@ const SignUp = () => {
           </div>
           <div>or</div>
           <div>
-            <div className="text-white cursor-pointer p-2 bg-blue-500 rounded-md m-2 hover:bg-blue-600 transition-all">
+            <div
+              className="text-white cursor-pointer p-2 bg-blue-500 rounded-md m-2 hover:bg-blue-600 transition-all"
+              onClick={() => {
+                signInWithGoogle();
+              }}
+            >
               Sign up with Google
             </div>
           </div>
