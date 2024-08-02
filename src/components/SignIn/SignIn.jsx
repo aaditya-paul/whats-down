@@ -1,10 +1,12 @@
-'use client'
+"use client";
 import { auth } from "@/lib/firebaseConfig";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import Google from "@/../public/assests/icons/Google-Logo.wine.svg";
 
 const SignIn = () => {
   const signInWithGoogle = async () => {
@@ -58,12 +60,13 @@ const SignIn = () => {
           <div>or</div>
           <div>
             <div
-              className="cursor-pointer p-2 bg-blue-500 rounded-md m-2 hover:bg-blue-600 transition-all"
+              className="cursor-pointer gap-2 flex justify-center items-center p-2 px-3 bg-gray-800 rounded-md m-2 hover:bg-blue-700 transition-all"
               onClick={() => {
                 signInWithGoogle();
               }}
             >
-              Sign in with Google
+              <span>Sign in with</span>
+              <Image src={Google} width={50} height={50} className="scale-150 m-1" alt="google-icon" />
             </div>
           </div>
           <div className="m-5 flex flex-row gap-2 text-sm">
