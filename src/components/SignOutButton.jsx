@@ -12,7 +12,7 @@ const SignOutButton = () => {
           className="bg-gray-800 rounded-lg cursor-pointer p-2 font-light text-sm hover:bg-red-700 transition-all"
           onClick={() => {
             signOut(auth);
-            router.replace("/sign-in"); 
+            router.replace("/sign-in");
           }}
         >
           Sign Out

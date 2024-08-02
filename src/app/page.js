@@ -11,21 +11,6 @@ export default function Home() {
   const router = useRouter();
   const [isUser, setIsUser] = useState(user);
 
-  // useEffect(() => {
-  //   // Redirect to a specific page after component mount
-  //   // router.push("/sign-up");
-  //   if (!user) {
-  //     router.push("/sign-up");
-  //     return null; // Since you're redirecting, return null or loading indicator
-  //   } else {
-  //     return (
-  //       <>
-  //         <ChatRoom />
-  //       </>
-  //     );
-  //   }
-  // }, [router]);
-
   if (!isUser) {
     router.push("/sign-up");
     return null; // Since you're redirecting, return null or loading indicator
