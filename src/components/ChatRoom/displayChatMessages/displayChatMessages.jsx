@@ -1,25 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 
-const messagesArray = [
-  {
-    type: "sent",
-    text: "hello i am ksnuasbdbyddddddddddddddddddddddddddd",
-  },
-  {
-    type: "received",
-    text: "hello0000000000000000000000000000000ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd0000000",
-  },
-  {
-    type: "received",
-    text: "hello",
-  },
-  {
-    type: "sent",
-    text: "hello",
-  },
-];
 
-const DisplayChatMessages = () => {
+const DisplayChatMessages = ({messagesArray}) => {
+  
   return (
     <>
       <div>
@@ -47,7 +30,7 @@ const DisplayChatMessages = () => {
                   {messages.text}
                 </span>
                 <div>
-                  <span className="text-[10px] text-gray-400">21:08</span>
+                  <span className="text-[10px] text-gray-400">{messages.time}</span>
                 </div>
               </div>
               <div
