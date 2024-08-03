@@ -7,7 +7,7 @@ const messagesArray = [
   },
   {
     type: "received",
-    text: "hello00000000000000000000000000000000000000",
+    text: "hello0000000000000000000000000000000ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd0000000",
   },
   {
     type: "received",
@@ -31,7 +31,9 @@ const DisplayChatMessages = () => {
           >
             <div
               className={`flex ${
-                messages.type == "sent" ? "justify-end" : " justify-end flex-row-reverse"
+                messages.type == "sent"
+                  ? " justify-end "
+                  : " justify-end flex-row-reverse "
               } m-1 mx-4 w-max flex`}
             >
               <div
@@ -39,15 +41,20 @@ const DisplayChatMessages = () => {
                   messages.type == "sent"
                     ? "bg-[#4931d0e9] rounded-tr-none"
                     : "bg-gray-800 rounded-tl-none "
-                }  w-max p-2 items-end flex flex-col gap-2 rounded-lg max-w-[80%] min-w-[150px]`}
+                }  w-max p-2 items-end flex flex-col gap-2 rounded-lg max-w-[800px] min-w-[150px]`}
               >
-                <span className="text-wrap flex-wrap text-sm w-full break-all ">{messages.text}</span>
+                <span className="text-wrap flex-wrap text-sm w-full break-all">
+                  {messages.text}
+                </span>
                 <div>
-                  <span className="text-[10px]">21:08</span>
+                  <span className="text-[10px] text-gray-400">21:08</span>
                 </div>
               </div>
-              <div className={`w-2 flex flex-col ${
-                    messages.type == "sent" ? "": "items-end"} h-10`}>
+              <div
+                className={`w-2 flex flex-col ${
+                  messages.type == "sent" ? "" : "items-end"
+                } h-10`}
+              >
                 <div
                   className={`${
                     messages.type == "sent" ? "bg-[#4931d0e9]" : "bg-gray-800"
